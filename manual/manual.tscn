@@ -1,0 +1,594 @@
+[gd_scene format=3 uid="uid://bwtm4t7wknd37"]
+
+[ext_resource type="Texture2D" uid="uid://sc64x8xqk38h" path="res://assets/book_background.svg" id="1_e6am2"]
+[ext_resource type="Texture2D" uid="uid://dww88h64nf8q7" path="res://assets/bg.svg" id="1_lcgf1"]
+[ext_resource type="Texture2D" uid="uid://cbdx62jaeyos8" path="res://assets/book.svg" id="2_3rnd8"]
+[ext_resource type="Script" uid="uid://u8kss5p0fxbe" path="res://manual/manual.gd" id="2_sth5w"]
+[ext_resource type="Theme" uid="uid://de8835nk2nbdf" path="res://misc/main_theme.tres" id="3_7kmrx"]
+[ext_resource type="PackedScene" uid="uid://2e3sej7oyfd5" path="res://manual/tab_panel.tscn" id="4_45q66"]
+[ext_resource type="Texture2D" uid="uid://c282or8cv7cns" path="res://assets/axiom_icon.svg" id="5_45q66"]
+[ext_resource type="Texture2D" uid="uid://bmjsbh1nlg720" path="res://assets/pyramid_icon.svg" id="6_ps3ir"]
+[ext_resource type="Texture2D" uid="uid://dlmday8melswl" path="res://assets/theorem_icon.svg" id="7_1tw1q"]
+[ext_resource type="Texture2D" uid="uid://cutn8vm6b4mio" path="res://assets/parallelepiped_icon.svg" id="7_15xu1"]
+[ext_resource type="Texture2D" uid="uid://qexfbagrsl2v" path="res://assets/property_tooltip_icon.svg" id="10_lcgf1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sth5w"]
+bg_color = Color(1, 0.8039216, 0.101960786, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.8039216, 0.101960786, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tw1q"]
+bg_color = Color(1, 0.36078432, 0.28235295, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.36078432, 0.28235295, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Animation" id="Animation_lcgf1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Tooltip:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Tooltip:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bgl6f"]
+resource_name = "hide_manual"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.46651644, 0.25881624),
+"update": 0,
+"values": [15.5, 480.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.03490658503988659, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.2973016, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_15xu1"]
+resource_name = "show_manual"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.25881624, 1),
+"update": 0,
+"values": [480.0, 15.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.03490658503988659, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.3298769, 1.189207),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cnb7g"]
+resource_name = "show_tooltip"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Tooltip:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(0.8408958, 0.96593636, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Tooltip:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.05235987755982989, 0.0, 0.05235987755982989, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bgl6f"]
+_data = {
+&"RESET": SubResource("Animation_lcgf1"),
+&"hide_manual": SubResource("Animation_bgl6f"),
+&"show_manual": SubResource("Animation_15xu1"),
+&"show_tooltip": SubResource("Animation_cnb7g")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15xu1"]
+bg_color = Color(0.9529412, 0.8352941, 0.58431375, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.9529412, 0.8352941, 0.58431375, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.42352942)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=2025360197]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1143555150]
+visible = false
+offset_right = 1153.7778
+offset_bottom = 649.0
+texture = ExtResource("1_lcgf1")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1403903507]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.3372549)
+
+[node name="Manual" type="Control" parent="." unique_id=1781206810 node_paths=PackedStringArray("current_tab", "all_tabs")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -0.0009765625
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(572, 391)
+theme = ExtResource("3_7kmrx")
+script = ExtResource("2_sth5w")
+current_tab = NodePath("TextureRect/TabsHBoxContainer/TabPanel2")
+all_tabs = [NodePath("TextureRect/TabsHBoxContainer/TabPanel"), NodePath("TextureRect/TabsHBoxContainer/TabPanel2"), NodePath("TextureRect/TabsHBoxContainer/TabPanel3")]
+
+[node name="TextureRect" type="TextureRect" parent="Manual" unique_id=203289360]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 121.0
+offset_top = 139.0
+offset_right = -129.66669
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_e6am2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Manual/TextureRect" unique_id=1534533228]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3rnd8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TabsHBoxContainer" type="HBoxContainer" parent="Manual/TextureRect" unique_id=799101122]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07300001
+anchor_top = -0.037
+anchor_right = 0.47300002
+anchor_bottom = 0.047000002
+offset_left = 0.2026596
+offset_top = -0.24100113
+offset_right = 2.6693115
+offset_bottom = -1.3289757
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 11
+
+[node name="TabPanel" parent="Manual/TextureRect/TabsHBoxContainer" unique_id=324115821 node_paths=PackedStringArray("manual") instance=ExtResource("4_45q66")]
+layout_mode = 2
+size_flags_vertical = 8
+manual = NodePath("../../..")
+
+[node name="TabTitle" parent="Manual/TextureRect/TabsHBoxContainer/TabPanel/HBoxContainer" index="1"]
+text = "Плоскость"
+
+[node name="TabPanel2" parent="Manual/TextureRect/TabsHBoxContainer" unique_id=798503251 node_paths=PackedStringArray("manual") instance=ExtResource("4_45q66")]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_sth5w")
+manual = NodePath("../../..")
+
+[node name="TabIcon" parent="Manual/TextureRect/TabsHBoxContainer/TabPanel2/HBoxContainer" index="0"]
+texture = ExtResource("6_ps3ir")
+
+[node name="TabTitle" parent="Manual/TextureRect/TabsHBoxContainer/TabPanel2/HBoxContainer" index="1"]
+text = "Пирамида"
+
+[node name="TabPanel3" parent="Manual/TextureRect/TabsHBoxContainer" unique_id=1963250660 node_paths=PackedStringArray("manual") instance=ExtResource("4_45q66")]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_1tw1q")
+manual = NodePath("../../..")
+
+[node name="TabIcon" parent="Manual/TextureRect/TabsHBoxContainer/TabPanel3/HBoxContainer" index="0"]
+texture = ExtResource("7_15xu1")
+
+[node name="TabTitle" parent="Manual/TextureRect/TabsHBoxContainer/TabPanel3/HBoxContainer" index="1"]
+text = "Параллелепипед"
+
+[node name="Page1" type="TextureRect" parent="Manual/TextureRect" unique_id=1308743957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.777771
+offset_top = 14.0
+offset_right = -23.777771
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3rnd8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MenuBar" type="TabContainer" parent="Manual/TextureRect" unique_id=1115257484]
+visible = false
+layout_mode = 0
+offset_left = 39.195374
+offset_top = -21.0
+offset_right = 866.793
+offset_bottom = 497.0
+theme = ExtResource("3_7kmrx")
+current_tab = 0
+
+[node name="Page2" type="TextureRect" parent="Manual/TextureRect/MenuBar" unique_id=1124462261]
+layout_mode = 2
+texture = ExtResource("2_3rnd8")
+expand_mode = 1
+stretch_mode = 5
+metadata/_tab_index = 0
+
+[node name="Page3" type="TextureRect" parent="Manual/TextureRect/MenuBar" unique_id=288355722]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_3rnd8")
+expand_mode = 1
+stretch_mode = 5
+metadata/_tab_index = 1
+
+[node name="ManualPageLeft" type="VBoxContainer" parent="Manual/TextureRect" unique_id=1726857333]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057000004
+anchor_top = 0.045
+anchor_right = 0.45900002
+anchor_bottom = 0.94100004
+offset_left = 15.623997
+offset_top = 22.185
+offset_right = -12.712006
+offset_bottom = -16.087036
+theme_override_constants/separation = 9
+
+[node name="Article1" type="VBoxContainer" parent="Manual/TextureRect/ManualPageLeft" unique_id=1914898277]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Manual/TextureRect/ManualPageLeft/Article1" unique_id=1410126965]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="TextureRect" type="TextureRect" parent="Manual/TextureRect/ManualPageLeft/Article1/HBoxContainer" unique_id=427541712]
+layout_mode = 2
+texture = ExtResource("5_45q66")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageLeft/Article1/HBoxContainer" unique_id=266711352]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b][color=#665EF0]ЗАГОЛОВОК"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageLeft/Article1" unique_id=358414368]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Просто обычный текст. Бывает также и [b]жирный текст[/b]. Еще в тексте слова могут быть [color=#FF5C48][url]цветными![/url][/color] Или даже немного [i]курсивные[/i]. В редких случаях слова бывают... [wave amp=20.0 freq=10.0 connected=0]необычными?[/wave]"
+fit_content = true
+
+[node name="Article2" type="VBoxContainer" parent="Manual/TextureRect/ManualPageLeft" unique_id=1703276020]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Manual/TextureRect/ManualPageLeft/Article2" unique_id=1633249031]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="TextureRect" type="TextureRect" parent="Manual/TextureRect/ManualPageLeft/Article2/HBoxContainer" unique_id=2140027300]
+layout_mode = 2
+texture = ExtResource("5_45q66")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageLeft/Article2/HBoxContainer" unique_id=926320025]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b][color=#665EF0]Аксиома"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageLeft/Article2" unique_id=1978501018]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Через любые три [color=#52CD87][url]точки[/url][/color], не лежащие на одной [color=#52CD87][url]прямой[/url][/color], проходит [color=#52CD87][url]плоскость[/url][/color], и притом только одна"
+fit_content = true
+
+[node name="Article3" type="VBoxContainer" parent="Manual/TextureRect/ManualPageLeft" unique_id=1250362937]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Manual/TextureRect/ManualPageLeft/Article3" unique_id=373528130]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="TextureRect" type="TextureRect" parent="Manual/TextureRect/ManualPageLeft/Article3/HBoxContainer" unique_id=575840855]
+layout_mode = 2
+texture = ExtResource("5_45q66")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageLeft/Article3/HBoxContainer" unique_id=125056145]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b][color=#665EF0]Аксиома"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageLeft/Article3" unique_id=940126683]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Если две [color=#52CD87][url]точки[/url][/color], лежат в [color=#52CD87][url]плоскости[/url][/color], то все [color=#52CD87][url]точки прямой[/url][/color], лежат в этой [color=#52CD87][url]плоскости[/url][/color]"
+fit_content = true
+
+[node name="Article4" type="VBoxContainer" parent="Manual/TextureRect/ManualPageLeft" unique_id=2079035705]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Manual/TextureRect/ManualPageLeft/Article4" unique_id=590178451]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="TextureRect" type="TextureRect" parent="Manual/TextureRect/ManualPageLeft/Article4/HBoxContainer" unique_id=408996120]
+layout_mode = 2
+texture = ExtResource("10_lcgf1")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageLeft/Article4/HBoxContainer" unique_id=63538091]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b][color=#44BFDA]Свойство"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageLeft/Article4" unique_id=743695367]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "В [color=#665EF0][url]прямоугольном[/url][/color]  [color=#FF5C48][url]параллелепипеде[/url][/color]
+все  шесть [color=#44BFDA][url]граней[/url][/color]  —  [color=#FFCD1A][url]прямоугольники[/url][/color].
+"
+fit_content = true
+
+[node name="ManualPageRight" type="VBoxContainer" parent="Manual/TextureRect" unique_id=262792917]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.559
+anchor_top = 0.091000006
+anchor_right = 0.93000007
+anchor_bottom = 0.91200006
+offset_left = 0.44262695
+offset_top = 0.20800018
+offset_right = 0.047912598
+offset_bottom = -0.039031982
+theme_override_constants/separation = 9
+
+[node name="Article4" type="VBoxContainer" parent="Manual/TextureRect/ManualPageRight" unique_id=680676231]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Manual/TextureRect/ManualPageRight/Article4" unique_id=1583632136]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="TextureRect" type="TextureRect" parent="Manual/TextureRect/ManualPageRight/Article4/HBoxContainer" unique_id=695628989]
+layout_mode = 2
+texture = ExtResource("7_1tw1q")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageRight/Article4/HBoxContainer" unique_id=1736414177]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b][color=#FF5C48]Теорема"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Manual/TextureRect/ManualPageRight/Article4" unique_id=348879701]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Через две [color=#665EF0][url]пересекающиеся[/url][/color] [color=#52CD87][url]прямые[/url][/color] проходит [color=#52CD87][url]плоскость[/url][/color], и притом только одна"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Manual" unique_id=1930507706]
+libraries/ = SubResource("AnimationLibrary_bgl6f")
+
+[node name="Tooltip" type="PanelContainer" parent="." unique_id=1296482955]
+unique_name_in_owner = true
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 266.0
+offset_bottom = 76.0
+pivot_offset = Vector2(131, 34)
+theme = ExtResource("3_7kmrx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_15xu1")
+
+[node name="Label" type="Label" parent="Tooltip" unique_id=1401081492]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.09803922, 0.09019608, 0.22745098, 1)
+text = "Какой-то текст с описанием 
+данного термина"
+
+[connection signal="meta_hover_ended" from="Manual/TextureRect/ManualPageLeft/Article1/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_ended"]
+[connection signal="meta_hover_started" from="Manual/TextureRect/ManualPageLeft/Article1/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_started"]
+[connection signal="meta_hover_ended" from="Manual/TextureRect/ManualPageLeft/Article2/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_ended"]
+[connection signal="meta_hover_started" from="Manual/TextureRect/ManualPageLeft/Article2/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_started"]
+[connection signal="meta_hover_ended" from="Manual/TextureRect/ManualPageLeft/Article3/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_ended"]
+[connection signal="meta_hover_started" from="Manual/TextureRect/ManualPageLeft/Article3/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_started"]
+[connection signal="meta_hover_ended" from="Manual/TextureRect/ManualPageLeft/Article4/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_ended"]
+[connection signal="meta_hover_started" from="Manual/TextureRect/ManualPageLeft/Article4/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_started"]
+[connection signal="meta_hover_ended" from="Manual/TextureRect/ManualPageRight/Article4/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_ended"]
+[connection signal="meta_hover_started" from="Manual/TextureRect/ManualPageRight/Article4/RichTextLabel" to="Manual" method="_on_rich_text_label_meta_hover_started"]
+
+[editable path="Manual/TextureRect/TabsHBoxContainer/TabPanel"]
+[editable path="Manual/TextureRect/TabsHBoxContainer/TabPanel2"]
+[editable path="Manual/TextureRect/TabsHBoxContainer/TabPanel3"]

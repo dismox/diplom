@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dplvgn4vki17s"]
+
+[ext_resource type="Script" uid="uid://cjhfavxkgkx85" path="res://scripts/web_connector.gd" id="1_50lk0"]
+
+[node name="WebConnector" type="Node" unique_id=855864315 node_paths=PackedStringArray("http_request")]
+script = ExtResource("1_50lk0")
+http_request = NodePath("HTTPRequest")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1060978926]
+timeout = 10.0
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
