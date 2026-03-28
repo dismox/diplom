@@ -1,4 +1,4 @@
 extends Node
 
-var url = "https://api.github.com/repos/godotengine/godot/releases/latest"
+var url = "http://192.168.56.1:80"
 var session_token

@@ -12,17 +12,14 @@ var successful_connection: bool
 
 func _on_login_button_pressed() -> void:
 	#проверка авторизации
-	if await login_process():
-		hide()
-		%ChaptersContainer.show()
-		%User.show()
+	login_process()
 	#else:
 	#	message.text += "\nНе удалось войти в аккаунт"
 
 func login_process() -> bool:
 	message.text = ""
 	
-	successful_connection = true
+	successful_connection = false
 	
 	login = username_edit.text
 	password = password_edit.text
@@ -36,17 +33,29 @@ func login_process() -> bool:
 	
 	if login and password:
 		#запрос
-		await check_login()
+		check_login()
 		
 	return successful_connection
 
 func check_login():
-	await http_request.request(Global.url, [], HTTPClient.METHOD_GET)
+	var data = {
+		"name": login, 
+		"password": password
+		}
+	var json = JSON.stringify(data, "\t")
+	print(json)
+	await http_request.request("http://192.168.56.1:80/users/login", ["Content-Type: application/json"], HTTPClient.METHOD_POST, json)
 	
 
 func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+	
 	if response_code == 0:
 		message.text += "\nПривышено время ожидания ответа"
 		successful_connection = false
+	elif response_code == 200:
+		#successful_connection = true
+		hide()
+		%ChaptersContainer.show()
+		%User.show()
 	else:
-		successful_connection = true
+		message.text = body.get_string_from_utf8()
