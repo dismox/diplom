@@ -11,7 +11,9 @@ func _ready() -> void:
 	$TextureRect/TabsHBoxContainer/TabPanel.articles = [$TextureRect/ManualPageLeft/Article1]
 	$TextureRect/TabsHBoxContainer/TabPanel2.articles = [$TextureRect/ManualPageLeft/Article2, $TextureRect/ManualPageLeft/Article3, $TextureRect/ManualPageRight/Article4]
 	$TextureRect/TabsHBoxContainer/TabPanel3.articles = [$TextureRect/ManualPageLeft/Article2, $TextureRect/ManualPageLeft/Article4]
-
+	
+	$AnimationPlayer.play("hide_manual")
+	on_screen = false
 
 func show_articles(articles: Array):
 	for child in %ManualPageLeft.get_children():

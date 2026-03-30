@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cwqtk5u2emwwe"]
+
+[ext_resource type="Script" uid="uid://cejm0p87fh06a" path="res://scripts/account.gd" id="1_7np2n"]
+[ext_resource type="Texture2D" uid="uid://nfvs64eun3di" path="res://icon.svg" id="1_xg63p"]
+[ext_resource type="Theme" uid="uid://de8835nk2nbdf" path="res://misc/main_theme.tres" id="2_mwt1v"]
+
+[node name="Account" type="Control" unique_id=365993146]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7np2n")
+
+[node name="AccountInfoContainer" type="PanelContainer" parent="." unique_id=1921715156]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 13.0
+offset_top = 104.0
+offset_right = 1128.0
+offset_bottom = 612.0
+theme = ExtResource("2_mwt1v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AccountInfoContainer" unique_id=12484609]
+layout_mode = 2
+
+[node name="RegistrationDateLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=1578304926]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Дата регистрации: "
+autowrap_mode = 3
+
+[node name="TasksLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=824817296]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Выполнено заданий:"
+autowrap_mode = 3
+
+[node name="AchivmentsLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=466578355]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Достижения:"
+autowrap_mode = 3
+
+[node name="User" type="PanelContainer" parent="." unique_id=976356730]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 86.0
+grow_horizontal = 0
+theme = ExtResource("2_mwt1v")
+
+[node name="MarginContainer" type="MarginContainer" parent="User" unique_id=1853339259]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="User/MarginContainer" unique_id=1676329936]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="User/MarginContainer/HBoxContainer" unique_id=2073016124]
+layout_mode = 2
+texture = ExtResource("1_xg63p")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="User/MarginContainer/HBoxContainer" unique_id=1723976867]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="User/MarginContainer/HBoxContainer/VBoxContainer" unique_id=561850165]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_mwt1v")
+text = "Никнейм"
+
+[node name="AccountLevelLabel" type="Label" parent="User/MarginContainer/HBoxContainer/VBoxContainer" unique_id=203762627]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("2_mwt1v")
+text = "Уровень 1"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1538199355]
+unique_name_in_owner = true
+timeout = 10.0
+
+[connection signal="gui_input" from="User" to="." method="_on_user_gui_input"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

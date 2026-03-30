@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://4xrgicgq7e0l"]
+
+[ext_resource type="Script" uid="uid://3y3rngsmdrke" path="res://scripts/autorisation.gd" id="1_isc2p"]
+[ext_resource type="Theme" uid="uid://de8835nk2nbdf" path="res://misc/main_theme.tres" id="1_ouvn0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ouvn0"]
+font_color = Color(0.42745098, 0.3647059, 0.3647059, 1)
+
+[node name="Autorisation" type="PanelContainer" unique_id=243573288]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.5
+offset_top = -74.5
+offset_right = 132.5
+offset_bottom = 74.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_ouvn0")
+script = ExtResource("1_isc2p")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1682496064]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1998312729]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1421648780]
+layout_mode = 2
+text = "Авторизация"
+label_settings = SubResource("LabelSettings_ouvn0")
+horizontal_alignment = 1
+
+[node name="UsernameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=150235507]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Логин"
+
+[node name="PasswordEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=1929620977]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Пароль"
+secret = true
+
+[node name="LoginButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1387419137]
+layout_mode = 2
+text = "Вход"
+
+[node name="Message" type="Label" parent="MarginContainer/VBoxContainer" unique_id=20709078]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1468284965]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LoginButton" to="." method="_on_login_button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

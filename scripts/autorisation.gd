@@ -48,14 +48,19 @@ func check_login():
 	
 
 func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	
 	if response_code == 0:
 		message.text += "\nПривышено время ожидания ответа"
 		successful_connection = false
 	elif response_code == 200:
 		#successful_connection = true
+		var json_string = body.get_string_from_utf8()
+		var data = JSON.parse_string(json_string)
+		Global.accessToken = data.accessToken
+		#Global.accessToken = data.get("accessToken", "?") #Другой вариант если тот не работает
+		%Account.request_account_info()
+		%Account.show()
+		
 		hide()
 		%ChaptersContainer.show()
-		%User.show()
 	else:
 		message.text = body.get_string_from_utf8()

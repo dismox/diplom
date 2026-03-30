@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://m6ccgm1y3a0s"]
 
 [ext_resource type="Script" uid="uid://cjpjahe08p5fs" path="res://scripts/chapter_container.gd" id="1_qtmti"]
+[ext_resource type="Theme" uid="uid://de8835nk2nbdf" path="res://misc/main_theme.tres" id="1_yvbi4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7a4el"]
 font_color = Color(0, 0, 0, 1)
 
 [node name="ChapterContainer" type="VBoxContainer" unique_id=1546433395]
+theme = ExtResource("1_yvbi4")
 script = ExtResource("1_qtmti")
 
 [node name="Panel" type="PanelContainer" parent="." unique_id=937322970]
@@ -13,16 +15,19 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme = ExtResource("1_yvbi4")
 
 [node name="Label" type="Label" parent="Panel" unique_id=239164509]
 layout_mode = 2
+theme = ExtResource("1_yvbi4")
 text = "Название"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=351648530]
 layout_mode = 2
-text = "0/30"
+theme = ExtResource("1_yvbi4")
+text = "Пройдено 0/30"
 label_settings = SubResource("LabelSettings_7a4el")
 horizontal_alignment = 1
 

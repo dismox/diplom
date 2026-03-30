@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dbs1rnnhqiy7q" path="res://scripts/camera_controller.gd" id="2_f2txt"]
 [ext_resource type="Shader" uid="uid://cq11fph08sn7k" path="res://shader.gdshader" id="3_1ainy"]
 [ext_resource type="Script" uid="uid://2r54rrybcoyt" path="res://scripts/ui_controller.gd" id="4_n6hdu"]
+[ext_resource type="Texture2D" uid="uid://dheokgv2xll1j" path="res://assets/pattern_line.svg" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://bwtm4t7wknd37" path="res://manual/manual.tscn" id="5_f2txt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
@@ -34,7 +35,7 @@ specular_mode = 1
 disable_ambient_light = true
 disable_fog = true
 disable_specular_occlusion = true
-albedo_color = Color(0.17329991, 0.4097272, 0.38031387, 1)
+albedo_color = Color(0.1982626, 0.3157461, 0.53679544, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
 
@@ -148,9 +149,10 @@ text = "пример 2"
 [node name="FigureDebug" type="VBoxContainer" parent="UI/UIController" unique_id=1853619391]
 layout_mode = 0
 offset_left = 14.0
-offset_top = 16.0
+offset_top = 64.0
 offset_right = 558.0
-offset_bottom = 249.0
+offset_bottom = 297.0
+scale = Vector2(0.69, 0.69)
 
 [node name="Type" type="HBoxContainer" parent="UI/UIController/FigureDebug" unique_id=66572103]
 layout_mode = 2
@@ -292,6 +294,35 @@ layout_mode = 2
 max_value = 10.0
 step = 0.1
 value = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="UI" unique_id=1511339849]
+z_index = -1
+offset_left = -1.0
+offset_top = -15.0
+offset_right = 1152.0
+offset_bottom = 65.0
+texture = ExtResource("5_1ainy")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
+flip_v = true
+
+[node name="TextureRect2" type="TextureRect" parent="UI" unique_id=799646536]
+z_index = -1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.5
+offset_top = -51.0
+offset_right = 576.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_1ainy")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="CanvasLayer" parent="." unique_id=2025360197 instance=ExtResource("5_f2txt")]
 

@@ -5,30 +5,45 @@
 [ext_resource type="FontFile" uid="uid://bs0vha12l8u6r" path="res://font/ShantellSans-BoldItalic.ttf" id="3_s77dj"]
 [ext_resource type="FontFile" uid="uid://cbo8j782bahqi" path="res://font/ShantellSans-Italic.ttf" id="4_t4b1j"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xb1r6"]
+bg_color = Color(0.9764706, 0.84313726, 0.627451, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.9764706, 0.84313726, 0.627451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.5058824)
+shadow_size = 1
+shadow_offset = Vector2(0, 5)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uctte"]
-bg_color = Color(0.30692264, 0.3069227, 0.30692258, 1)
+bg_color = Color(0.9882353, 0.98039216, 0.9490196, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_color = Color(0, 0, 0, 0.23921569)
 shadow_size = 1
-shadow_offset = Vector2(5, 5)
+shadow_offset = Vector2(0, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0i2v"]
-bg_color = Color(0.21176471, 0.7490196, 0.35686275, 1)
+bg_color = Color(0.9882353, 0.98039216, 0.9490196, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.21176471, 0.7490196, 0.35686275, 1)
+border_color = Color(0.9882353, 0.98039216, 0.9490196, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 shadow_color = Color(0, 0, 0, 0.42352942)
 shadow_size = 1
-shadow_offset = Vector2(5, 5)
+shadow_offset = Vector2(0, 5)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xb1r6"]
 
@@ -46,7 +61,12 @@ shadow_size = 1
 shadow_offset = Vector2(5.365, 5.525)
 
 [resource]
+Button/colors/font_color = Color(0.42745098, 0.3647059, 0.3647059, 1)
+Button/fonts/font = ExtResource("1_hkmxq")
+Button/styles/normal = SubResource("StyleBoxFlat_xb1r6")
+Label/colors/font_color = Color(0.42745098, 0.3647059, 0.3647059, 1)
 Label/fonts/font = ExtResource("1_hkmxq")
+LineEdit/fonts/font = ExtResource("1_hkmxq")
 Panel/styles/panel = SubResource("StyleBoxFlat_uctte")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_e0i2v")
 RichTextLabel/colors/default_color = Color(0.34117648, 0.34117648, 0.34117648, 1)

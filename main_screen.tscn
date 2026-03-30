@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://ci8y62yq0afj3"]
 
 [ext_resource type="Script" uid="uid://d0yl3t8heqcn" path="res://menu_controller.gd" id="1_kwhh3"]
-[ext_resource type="Script" uid="uid://3y3rngsmdrke" path="res://scripts/autorisation.gd" id="1_tjn2e"]
+[ext_resource type="Texture2D" uid="uid://cyw48bgvn3p6h" path="res://assets/background_figure_1.svg" id="2_ue4rx"]
 [ext_resource type="Texture2D" uid="uid://nfvs64eun3di" path="res://icon.svg" id="2_w0p2i"]
 [ext_resource type="PackedScene" uid="uid://m6ccgm1y3a0s" path="res://chapter_container.tscn" id="3_7a4el"]
+[ext_resource type="Texture2D" uid="uid://ib700ssfcjmj" path="res://assets/background_figure_2.svg" id="3_sjiej"]
+[ext_resource type="Texture2D" uid="uid://n58a7txtfwlh" path="res://assets/background_figure_3.svg" id="4_4sv2p"]
+[ext_resource type="PackedScene" uid="uid://4xrgicgq7e0l" path="res://autorisation.tscn" id="5_0osx7"]
+[ext_resource type="PackedScene" uid="uid://cwqtk5u2emwwe" path="res://user.tscn" id="6_62wn8"]
+[ext_resource type="Script" uid="uid://cpjtr5hl7163a" path="res://scripts/level_select.gd" id="8_4sv2p"]
+[ext_resource type="Theme" uid="uid://de8835nk2nbdf" path="res://misc/main_theme.tres" id="9_0osx7"]
+[ext_resource type="PackedScene" uid="uid://c2fe1xybwvr7o" path="res://table_line.tscn" id="11_62wn8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w0p2i"]
 font_size = 48
@@ -29,100 +36,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.4117647, 0.76862746, 0.49019608, 1)
 
-[node name="Autorisation" type="PanelContainer" parent="." unique_id=1082607814]
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=1590943563]
+layout_mode = 0
+offset_right = 226.0
+offset_bottom = 196.0
+texture = ExtResource("2_ue4rx")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect" unique_id=1314781033]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 97.0
+offset_right = 1003.0
+offset_bottom = 279.0
+texture = ExtResource("3_sjiej")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect" unique_id=2108475604]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 235.0
+offset_right = 331.0
+offset_bottom = 452.0
+texture = ExtResource("4_4sv2p")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Autorisation" parent="." unique_id=243573288 instance=ExtResource("5_0osx7")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.5
-offset_top = -74.5
-offset_right = 132.5
-offset_bottom = 74.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("1_tjn2e")
+offset_left = -112.0
+offset_top = -99.5
+offset_right = 112.0
+offset_bottom = 99.5
 
-[node name="MarginContainer" type="MarginContainer" parent="Autorisation" unique_id=1315210078]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Autorisation/MarginContainer" unique_id=1533836842]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Autorisation/MarginContainer/VBoxContainer" unique_id=1565209899]
-layout_mode = 2
-text = "Авторизация"
-horizontal_alignment = 1
-
-[node name="UsernameEdit" type="LineEdit" parent="Autorisation/MarginContainer/VBoxContainer" unique_id=1896187579]
-unique_name_in_owner = true
-layout_mode = 2
-placeholder_text = "Логин"
-
-[node name="PasswordEdit" type="LineEdit" parent="Autorisation/MarginContainer/VBoxContainer" unique_id=1508184126]
-unique_name_in_owner = true
-layout_mode = 2
-placeholder_text = "Пароль"
-secret = true
-
-[node name="LoginButton" type="Button" parent="Autorisation/MarginContainer/VBoxContainer" unique_id=1459312318]
-layout_mode = 2
-text = "Вход"
-
-[node name="Message" type="Label" parent="Autorisation/MarginContainer/VBoxContainer" unique_id=1233339384]
-unique_name_in_owner = true
-layout_mode = 2
-horizontal_alignment = 1
-
-[node name="HTTPRequest" type="HTTPRequest" parent="Autorisation" unique_id=855446952]
-unique_name_in_owner = true
-
-[node name="User" type="PanelContainer" parent="." unique_id=774338697]
+[node name="Account" parent="." unique_id=976356730 instance=ExtResource("6_62wn8")]
 unique_name_in_owner = true
 visible = false
+z_index = 1
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -155.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 68.0
-grow_horizontal = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="User" unique_id=377522558]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="User/MarginContainer" unique_id=1824687234]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="User/MarginContainer/HBoxContainer" unique_id=1618161754]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="User/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1307846543]
-layout_mode = 2
-text = "Никнейм"
-
-[node name="Label2" type="Label" parent="User/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1770801477]
-layout_mode = 2
-text = "Уровень 1"
-
-[node name="TextureRect" type="TextureRect" parent="User/MarginContainer/HBoxContainer" unique_id=1096559173]
-layout_mode = 2
-texture = ExtResource("2_w0p2i")
-expand_mode = 2
 
 [node name="ChaptersContainer" type="ScrollContainer" parent="." unique_id=762120042]
 unique_name_in_owner = true
@@ -131,10 +86,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 21.0
+offset_left = 164.0
 offset_top = 210.0
-offset_right = -21.0
-offset_bottom = -203.0
+offset_right = -149.0
+offset_bottom = -171.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -165,22 +120,6 @@ layout_mode = 2
 [node name="ChapterContainer5" parent="ChaptersContainer/HBoxContainer" unique_id=1207777733 instance=ExtResource("3_7a4el")]
 layout_mode = 2
 
-[node name="ChapterContainer6" parent="ChaptersContainer/HBoxContainer" unique_id=1140755022 instance=ExtResource("3_7a4el")]
-layout_mode = 2
-
-[node name="ChapterContainer7" parent="ChaptersContainer/HBoxContainer" unique_id=391785687 instance=ExtResource("3_7a4el")]
-layout_mode = 2
-
-[node name="BackButton" type="Button" parent="." unique_id=716107067]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = 12.0
-offset_top = 11.0
-offset_right = 54.0
-offset_bottom = 53.0
-text = "<-"
-
 [node name="Label" type="Label" parent="." unique_id=1356723830]
 visible = false
 layout_mode = 1
@@ -198,143 +137,279 @@ grow_vertical = 2
 text = "ВЫБОР ТЕМЫ"
 label_settings = SubResource("LabelSettings_w0p2i")
 
-[node name="LevelSelectContainer" type="Container" parent="." unique_id=2077195810]
+[node name="LevelSelect" type="Control" parent="." unique_id=1732873154]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
-offset_left = 95.0
-offset_top = 87.0
-offset_right = 1058.0
-offset_bottom = 585.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("9_0osx7")
+script = ExtResource("8_4sv2p")
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelSelectContainer" unique_id=813686415]
+[node name="LevelSelectContainer" type="PanelContainer" parent="LevelSelect" unique_id=1887770263]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 95.0
+offset_top = 106.0
+offset_right = -77.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelect/LevelSelectContainer" unique_id=813686415]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelectContainer/MarginContainer" unique_id=320764153]
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect/LevelSelectContainer/MarginContainer" unique_id=320764153]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="LevelSelectContainer/MarginContainer/VBoxContainer" unique_id=1086716910]
+[node name="Label" type="Label" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer" unique_id=1086716910]
 layout_mode = 2
+size_flags_vertical = 0
 text = "Выбор уровня"
 label_settings = SubResource("LabelSettings_kwhh3")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelSelectContainer/MarginContainer/VBoxContainer" unique_id=1395499064]
+[node name="ScrollContainer" type="ScrollContainer" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer" unique_id=797315864]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+scroll_hint_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1395499064]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LevelsGridContainer" type="GridContainer" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer" unique_id=351719488]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 7
+
+[node name="LevelButton" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1390890534]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_0osx7")
+text = "1"
+
+[node name="PanelContainer2" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=733566370]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer3" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=977909773]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer4" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=2116277829]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer5" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1482143604]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer6" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=122413744]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer7" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=943028690]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer8" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=490369853]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer9" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1853941965]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer10" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=471825191]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer11" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1958231286]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer12" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1242958254]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer13" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1001605284]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer14" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1909879627]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer15" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1809449139]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer16" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1574821094]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer17" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=585625603]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer18" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1114216552]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="PanelContainer19" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1141432623]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer20" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1939224740]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer21" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1100379075]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer22" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1269375829]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer23" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=924774749]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PanelContainer24" type="Button" parent="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer" unique_id=1577837316]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="LevelPreviewContainer" type="PanelContainer" parent="LevelSelect" unique_id=1602506947]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 96.0
+offset_top = 107.0
+offset_right = 1075.0
+offset_bottom = 585.0
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelect/LevelPreviewContainer" unique_id=267021229]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="GridContainer" type="GridContainer" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=351719488]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/h_separation = 30
-theme_override_constants/v_separation = 30
-columns = 8
-
-[node name="PanelContainer" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1390890534]
-custom_minimum_size = Vector2(80, 80)
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect/LevelPreviewContainer/MarginContainer" unique_id=1367535794]
 layout_mode = 2
 
-[node name="PanelContainer2" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=733566370]
-custom_minimum_size = Vector2(80, 80)
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer" unique_id=1764708187]
 layout_mode = 2
 
-[node name="PanelContainer3" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=977909773]
-custom_minimum_size = Vector2(80, 80)
+[node name="TextureRect" type="TextureRect" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=49332562]
+layout_mode = 2
+texture = ExtResource("2_w0p2i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1144483843]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1318243584]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Название и номер задачи хз"
+
+[node name="Label2" type="Label" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1558935282]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Описание там хз аывхщах  ащывх ызвщащ хзывщ ыщвзащ хщ хывзащхы ывзащхащх
+авз шызващ  ывзаш зшыва 
+аызщшзыва"
+
+[node name="Label" type="Label" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer" unique_id=1219851253]
+layout_mode = 2
+text = "ТАБЛИЦА ЛИДЕРОВ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer" unique_id=2103388748]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+scroll_hint_mode = 1
+
+[node name="LeaderTable" type="VBoxContainer" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=56393056]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TableLine" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer/ScrollContainer/LeaderTable" unique_id=535000326 instance=ExtResource("11_62wn8")]
 layout_mode = 2
 
-[node name="PanelContainer4" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=2116277829]
-custom_minimum_size = Vector2(80, 80)
+[node name="StartButton" type="Button" parent="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer" unique_id=496304302]
 layout_mode = 2
+text = "Пройти задачу"
 
-[node name="PanelContainer5" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1482143604]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
+[node name="BackButton" type="Button" parent="LevelSelect" unique_id=716107067]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1019.0
+offset_top = 122.0
+offset_right = 1061.0
+offset_bottom = 164.0
+text = "X"
 
-[node name="PanelContainer6" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=122413744]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
+[node name="HTTPRequest" type="HTTPRequest" parent="LevelSelect" unique_id=1204978588]
+unique_name_in_owner = true
+timeout = 10.0
 
-[node name="PanelContainer7" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=943028690]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="PanelContainer8" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=490369853]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="PanelContainer9" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1853941965]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="PanelContainer10" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=471825191]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="PanelContainer11" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1958231286]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer12" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1242958254]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer13" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1001605284]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer14" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1909879627]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer15" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1809449139]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer16" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1574821094]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer17" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=585625603]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="PanelContainer18" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1114216552]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="PanelContainer19" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1141432623]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer20" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1939224740]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer21" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1100379075]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer22" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1269375829]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer23" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=924774749]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[node name="PanelContainer24" type="Button" parent="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1577837316]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-
-[connection signal="pressed" from="Autorisation/MarginContainer/VBoxContainer/LoginButton" to="Autorisation" method="_on_login_button_pressed"]
-[connection signal="request_completed" from="Autorisation/HTTPRequest" to="Autorisation" method="_on_http_request_request_completed"]
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="LevelSelectContainer/MarginContainer/VBoxContainer/MarginContainer/GridContainer/PanelContainer" to="." method="_on_panel_container_pressed"]
+[connection signal="pressed" from="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer/LevelButton" to="LevelSelect" method="_on_level_button_pressed"]
+[connection signal="pressed" from="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="LevelSelect/BackButton" to="." method="_on_back_button_pressed"]

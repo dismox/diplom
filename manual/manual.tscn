@@ -564,6 +564,7 @@ libraries/ = SubResource("AnimationLibrary_bgl6f")
 
 [node name="Tooltip" type="PanelContainer" parent="." unique_id=1296482955]
 unique_name_in_owner = true
+visible = false
 offset_left = 9.0
 offset_top = 7.0
 offset_right = 266.0
