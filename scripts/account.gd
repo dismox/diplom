@@ -20,7 +20,7 @@ func _on_user_gui_input(event: InputEvent) -> void:
 
 func request_account_info() -> void:
 	#указать правильный url с Global.accessToken
-	await http_request.request("http://192.168.56.1:80/...", ["Content-Type: application/json"], HTTPClient.METHOD_GET)
+	await http_request.request("http://192.168.56.1:80/users", ["Content-Type: application/json", "authorization: " + Global.accessToken], HTTPClient.METHOD_GET)
 
 
 func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
@@ -30,10 +30,11 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 	elif response_code == 200:
 		var json_string = body.get_string_from_utf8()
 		var user_data = JSON.parse_string(json_string)
+		print(user_data)
 		name_label.text = user_data.get("name", "Неизвестно")
-		registration_date_label.text = "Дата регистрации:" + user_data.get("registrationDate", "Неизвестно")
-		tasks_label.text = "Пройдено заданий:" + user_data.get("registrationDate", "Неизвестно")
-		achivments_label.text = "Достижения:" +  user_data.get("achivments", "Неизвестно")
+		registration_date_label.text = "Дата регистрации: " + user_data.get("registrationDate", "Неизвестно")
+		tasks_label.text = "Пройдено заданий: " + str(int(user_data.get("completedTasksNumber", "Неизвестно")))
+		achivments_label.text = "Достижения: " +  user_data.get("achivmentsNames", "Неизвестно")
 	else:
 		return
 		#обработка ошибок
