@@ -26,7 +26,7 @@ func _on_level_button_pressed() -> void:
 func fill_level_preview():
 	
 	#как-то передавать айди уровня нужного пока не знаю как, но пока наверное вручную вставить просто
-	var level_id = ""
+	var level_id = "69cbb2961f768a0b56710ab8"
 	await http_request.request("http://192.168.56.1:80/tasks/" + level_id + "/leaderboard", ["Content-Type: application/json"], HTTPClient.METHOD_GET)
 
 
@@ -58,8 +58,8 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 		
 		for item in data:
 			var name = str(item.get("name", "?"))
-			var score = str(item.get("score", "0"))
-			var time = str(item.get("time", "00:00"))
+			var score = str(int(item.get("score", "0")))
+			var time = str(item.get("completeTime", "00:00"))
 			
 			var table_line: TableLine = load("res://table_line.tscn").instantiate()
 			leader_table.add_child(table_line)
