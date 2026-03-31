@@ -67,6 +67,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Autorisation" parent="." unique_id=243573288 instance=ExtResource("5_0osx7")]
+visible = false
 layout_mode = 1
 offset_left = -112.0
 offset_top = -99.5
@@ -75,13 +76,11 @@ offset_bottom = 99.5
 
 [node name="Account" parent="." unique_id=976356730 instance=ExtResource("6_62wn8")]
 unique_name_in_owner = true
-visible = false
 z_index = 1
 layout_mode = 1
 
 [node name="ChaptersContainer" type="ScrollContainer" parent="." unique_id=762120042]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -413,3 +412,4 @@ timeout = 10.0
 [connection signal="pressed" from="LevelSelect/LevelSelectContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LevelsGridContainer/LevelButton" to="LevelSelect" method="_on_level_button_pressed"]
 [connection signal="pressed" from="LevelSelect/LevelPreviewContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="LevelSelect/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="request_completed" from="LevelSelect/HTTPRequest" to="LevelSelect" method="_on_http_request_request_completed"]
