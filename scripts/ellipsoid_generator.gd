@@ -3,8 +3,24 @@ class_name EllipsoidGenerator
 
 static func generate(data: Dictionary) -> Mesh:
 	var height: float = data.height
-	var width: float = data.get("width", height)
-	var depth: float = data.get("depth", height)
+	var width: float = data.height
+	var depth: float = data.height
+	
+	if data.has("base_params"):
+		width= data.base_params.get("width", height)
+		depth = data.base_params.get("depth", height)
+
+	#var width: float
+	#if data.width:
+	#	width = data.width
+	#else:
+	#	width = height
+
+	#var depth: float
+	#if data.depth:
+	#	depth = data.depth
+	#else:
+	#	depth = height
 
 	var lat_segments: int = data.get("segments_lat", 32)
 	var lon_segments: int = data.get("segments_lon", 48)
