@@ -1,5 +1,14 @@
 extends Control
 
+var current_state: UIState
+
+enum UIState {
+	AUTORISATION,
+	CHAPTER_SELECTION,
+	TASK_SELECTION,
+	TASK_DESCRIPTION,
+	TASK,
+}
 
 func _on_back_button_pressed() -> void:
 	if %LevelPreviewContainer.visible:

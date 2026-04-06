@@ -25,6 +25,10 @@ func _on_pyramid_button_pressed() -> void:
 func _on_prism_button_pressed() -> void:
 	current_data.type = "prism"
 	update_figure()
+	
+func _on_ellipsoid_button_pressed() -> void:
+	current_data.type = "ellipsoid"
+	update_figure()
 
 
 func _on_rectangle_button_pressed() -> void:

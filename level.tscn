@@ -50,17 +50,6 @@ next_pass = SubResource("ShaderMaterial_lquwl")
 diffuse_mode = 1
 metallic_specular = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
-render_priority = -3
-shader = ExtResource("3_1ainy")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/outline_threshold = 0.2
-
-[sub_resource type="QuadMesh" id="QuadMesh_lquwl"]
-material = SubResource("ShaderMaterial_1bvp3")
-flip_faces = true
-size = Vector2(2, 2)
-
 [sub_resource type="ButtonGroup" id="ButtonGroup_0xm2m"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_h2yge"]
@@ -83,7 +72,7 @@ camera = NodePath("../Camera3D")
 test_figure = NodePath("../CSGCombiner3D/TestFigure")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1006707242]
-transform = Transform3D(1, 0, 0, 0, 0.6971651, 0.7169106, 0, -0.7169106, 0.6971651, 0, 2.6843293, 2.5078406)
+transform = Transform3D(1, 0, 0, 0, 0.6971651, 0.7169106, 0, -0.7169106, 0.6971651, 0, 2.6843293, 2.0902848)
 keep_aspect = 0
 fov = 37.849285
 
@@ -99,19 +88,20 @@ unique_name_in_owner = true
 mesh = SubResource("BoxMesh_0xm2m")
 material = SubResource("StandardMaterial3D_7mycd")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CSGCombiner3D/TestFigure" unique_id=504638257]
-visible = false
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_lquwl")
-
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1091785359]
 transform = Transform3D(1.7922409, 0, 0, 0, 1.5843364, 0, 0, 0, 1, 0.7981993, 1.101626, 0.3193028)
 visible = false
 operation = 2
 
+[node name="TestFigure2" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=909336187]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0497406, 0.74985576, 0)
+material = SubResource("StandardMaterial3D_7mycd")
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=438206737]
 
 [node name="UIController" type="Control" parent="UI" unique_id=920142314]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,29 +112,43 @@ mouse_filter = 2
 script = ExtResource("4_n6hdu")
 
 [node name="Button" type="Button" parent="UI/UIController" unique_id=1294685633]
-visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -80.0
-offset_bottom = 31.0
+offset_left = -274.0
+offset_top = 8.0
+offset_right = -189.0
+offset_bottom = 39.0
 grow_horizontal = 0
 text = "пример 1"
 
 [node name="Button2" type="Button" parent="UI/UIController" unique_id=10998570]
-visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -80.0
-offset_top = 40.0
-offset_bottom = 71.0
+offset_left = -183.0
+offset_top = 8.0
+offset_right = -98.0
+offset_bottom = 39.0
 grow_horizontal = 0
 text = "пример 2"
+
+[node name="Button3" type="Button" parent="UI/UIController" unique_id=1434343805]
+z_index = 5
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -93.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 39.0
+grow_horizontal = 0
+text = "пример 3"
 
 [node name="FigureDebug" type="VBoxContainer" parent="UI/UIController" unique_id=1853619391]
 layout_mode = 0
@@ -174,9 +178,8 @@ button_pressed = true
 button_group = SubResource("ButtonGroup_0xm2m")
 text = "Призма"
 
-[node name="Button" type="Button" parent="UI/UIController/FigureDebug/Type" unique_id=1865449142]
+[node name="EllipsoidButton" type="Button" parent="UI/UIController/FigureDebug/Type" unique_id=1865449142]
 layout_mode = 2
-disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_0xm2m")
 text = "Эллипсоид"
@@ -301,6 +304,7 @@ offset_left = -1.0
 offset_top = -15.0
 offset_right = 1152.0
 offset_bottom = 65.0
+mouse_filter = 2
 texture = ExtResource("5_1ainy")
 expand_mode = 1
 stretch_mode = 4
@@ -328,8 +332,10 @@ stretch_mode = 4
 
 [connection signal="pressed" from="UI/UIController/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/UIController/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="UI/UIController/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="UI/UIController/FigureDebug/Type/PyramidButton" to="UI/UIController" method="_on_pyramid_button_pressed"]
 [connection signal="pressed" from="UI/UIController/FigureDebug/Type/PrismButton" to="UI/UIController" method="_on_prism_button_pressed"]
+[connection signal="pressed" from="UI/UIController/FigureDebug/Type/EllipsoidButton" to="UI/UIController" method="_on_ellipsoid_button_pressed"]
 [connection signal="value_changed" from="UI/UIController/FigureDebug/Height/HeightEdit" to="UI/UIController" method="_on_height_edit_value_changed"]
 [connection signal="value_changed" from="UI/UIController/FigureDebug/Tilt/TiltXEdit" to="UI/UIController" method="_on_tilt_x_edit_value_changed"]
 [connection signal="value_changed" from="UI/UIController/FigureDebug/Tilt/TiltYEdit" to="UI/UIController" method="_on_tilt_y_edit_value_changed"]

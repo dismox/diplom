@@ -30,19 +30,19 @@ layout_mode = 2
 [node name="RegistrationDateLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=1578304926]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Дата регистрации: "
+text = "Дата регистрации: Ошибка загрузки данных"
 autowrap_mode = 3
 
 [node name="TasksLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=824817296]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Выполнено заданий:"
+text = "Выполнено заданий: Ошибка загрузки данных"
 autowrap_mode = 3
 
 [node name="AchivmentsLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=466578355]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Достижения:"
+text = "Достижения: Ошибка загрузки данных"
 autowrap_mode = 3
 
 [node name="User" type="PanelContainer" parent="." unique_id=976356730]
@@ -79,7 +79,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_mwt1v")
-text = "Никнейм"
+text = "Пользователь"
 
 [node name="AccountLevelLabel" type="Label" parent="User/MarginContainer/HBoxContainer/VBoxContainer" unique_id=203762627]
 unique_name_in_owner = true

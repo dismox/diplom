@@ -7,6 +7,8 @@ static func create_mesh(data: Dictionary) -> Mesh:
 			return PrismGenerator.generate(data)
 		"pyramid":
 			return PyramidGenerator.generate(data)
+		"ellipsoid":
+			return EllipsoidGenerator.generate(data)
 		_:
 			push_error("Неизвестный тип фигуры")
 			return null

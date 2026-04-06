@@ -9,13 +9,13 @@ static func generate(data: Dictionary) -> Mesh:
 func _build(data: Dictionary) -> void:
 	var base := _generate_base(data)
 	var height: float = data.height
-	var apex_offset = data.get("apex_offset", Vector2.ZERO)
+	var tilt = data.get("tilt", Vector2.ZERO)
 
 	# вершина пирамиды
 	var apex := Vector3(
-		apex_offset.x,
+		tilt.x,
 		height,
-		apex_offset.y
+		tilt.y
 	)
 
 	# --- БОКОВЫЕ ГРАНИ ---
