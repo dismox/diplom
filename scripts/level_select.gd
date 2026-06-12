@@ -2,7 +2,7 @@ extends Control
 
 @onready var http_request: HTTPRequest = %HTTPRequest
 
-@onready var levels_grid_container: GridContainer = %LevelsGridContainer
+@onready var levels_grid_container: HFlowContainer = %LevelsGridContainer
 @onready var level_button: Button = %LevelButton
 @onready var leader_table: VBoxContainer = %LeaderTable
 
@@ -49,7 +49,7 @@ func fill_level_preview():
 
 
 func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	if response_code == 0:
+	if response_code == 0 and %TableMessage:
 		print("Привышено время ожидания ответа")
 		%TableMessage.text = "Привышено время ожидания ответа"
 		%TableMessage.show()

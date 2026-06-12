@@ -7,7 +7,7 @@ extends Node3D
 @export var min_distance := 1.0
 @export var max_distance := 90.0
 
-@export var pan_speed := 0.01
+@export var pan_speed := 0.005
 
 @export var rotation_speed := 0.01
 
@@ -60,7 +60,7 @@ func _zoom(amount: float) -> void:
 
 func _pan(delta: Vector2) -> void:
 	var right := camera.global_transform.basis.x
-	var forward := -camera.global_transform.basis.z
+	var forward := camera.global_transform.basis.z
 
 	var move = (right * delta.x + forward * delta.y) * pan_speed
 

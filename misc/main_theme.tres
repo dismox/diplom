@@ -21,7 +21,7 @@ shadow_size = 1
 shadow_offset = Vector2(0, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uctte"]
-bg_color = Color(0.9464249, 0.9102849, 0.7704625, 1)
+bg_color = Color(0.54509807, 0.6666667, 0.8862745, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -45,6 +45,18 @@ shadow_color = Color(0, 0, 0, 0.42352942)
 shadow_size = 1
 shadow_offset = Vector2(0, 5)
 
+[sub_resource type="Gradient" id="Gradient_xb1r6"]
+offsets = PackedFloat32Array(0, 0.6241135)
+colors = PackedColorArray(0.03137255, 0.07058824, 0.47843137, 0.23529412, 0.03137255, 0.07058824, 0.47843137, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s77dj"]
+gradient = SubResource("Gradient_xb1r6")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t4b1j"]
+gradient = SubResource("Gradient_xb1r6")
+fill_from = Vector2(1, 0.009756098)
+fill_to = Vector2(1, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xb1r6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s77dj"]
@@ -64,6 +76,7 @@ shadow_offset = Vector2(5.365, 5.525)
 Button/colors/font_color = Color(0.42745098, 0.3647059, 0.3647059, 1)
 Button/fonts/font = ExtResource("1_hkmxq")
 Button/styles/normal = SubResource("StyleBoxFlat_xb1r6")
+HScrollBar/constants/padding_top = 0
 Label/colors/font_color = Color(0.42745098, 0.3647059, 0.3647059, 1)
 Label/fonts/font = ExtResource("1_hkmxq")
 LineEdit/fonts/font = ExtResource("1_hkmxq")
@@ -75,6 +88,8 @@ RichTextLabel/fonts/bold_font = ExtResource("2_xb1r6")
 RichTextLabel/fonts/bold_italics_font = ExtResource("3_s77dj")
 RichTextLabel/fonts/italics_font = ExtResource("4_t4b1j")
 RichTextLabel/fonts/normal_font = ExtResource("1_hkmxq")
+ScrollContainer/icons/scroll_hint_horizontal = SubResource("GradientTexture1D_s77dj")
+ScrollContainer/icons/scroll_hint_vertical = SubResource("GradientTexture2D_t4b1j")
 TabContainer/constants/tab_separation = 10
 TabContainer/fonts/font = ExtResource("1_hkmxq")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_xb1r6")

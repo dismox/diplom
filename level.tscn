@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://2r54rrybcoyt" path="res://scripts/ui_controller.gd" id="4_n6hdu"]
 [ext_resource type="Texture2D" uid="uid://dheokgv2xll1j" path="res://assets/pattern_line.svg" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://bwtm4t7wknd37" path="res://manual/manual.tscn" id="5_f2txt"]
+[ext_resource type="Theme" uid="uid://de8835nk2nbdf" path="res://misc/main_theme.tres" id="5_n6hdu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -54,6 +55,21 @@ metallic_specular = 1.0
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_h2yge"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_n6hdu"]
+font_size = 24
+outline_size = 10
+outline_color = Color(0.42745098, 0.3647059, 0.3647059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km5ld"]
+bg_color = Color(0.9882353, 0.98039216, 0.9490196, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.23921569)
+shadow_size = 1
+shadow_offset = Vector2(0, 5)
+
 [node name="Level" type="Node3D" unique_id=1904363021]
 script = ExtResource("1_0b4ue")
 
@@ -68,10 +84,10 @@ shadow_blur = 0.0
 
 [node name="CameraController" type="Node3D" parent="." unique_id=2034374384 node_paths=PackedStringArray("camera", "test_figure")]
 script = ExtResource("2_f2txt")
-camera = NodePath("../Camera3D")
+camera = NodePath("Camera3D")
 test_figure = NodePath("../CSGCombiner3D/TestFigure")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1006707242]
+[node name="Camera3D" type="Camera3D" parent="CameraController" unique_id=1006707242]
 transform = Transform3D(1, 0, 0, 0, 0.6971651, 0.7169106, 0, -0.7169106, 0.6971651, 0, 2.6843293, 2.0902848)
 keep_aspect = 0
 fov = 37.849285
@@ -93,11 +109,6 @@ transform = Transform3D(1.7922409, 0, 0, 0, 1.5843364, 0, 0, 0, 1, 0.7981993, 1.
 visible = false
 operation = 2
 
-[node name="TestFigure2" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=909336187]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0497406, 0.74985576, 0)
-material = SubResource("StandardMaterial3D_7mycd")
-
 [node name="UI" type="CanvasLayer" parent="." unique_id=438206737]
 
 [node name="UIController" type="Control" parent="UI" unique_id=920142314]
@@ -112,6 +123,7 @@ mouse_filter = 2
 script = ExtResource("4_n6hdu")
 
 [node name="Button" type="Button" parent="UI/UIController" unique_id=1294685633]
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 1
@@ -125,6 +137,7 @@ grow_horizontal = 0
 text = "пример 1"
 
 [node name="Button2" type="Button" parent="UI/UIController" unique_id=10998570]
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 1
@@ -138,6 +151,7 @@ grow_horizontal = 0
 text = "пример 2"
 
 [node name="Button3" type="Button" parent="UI/UIController" unique_id=1434343805]
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 1
@@ -298,20 +312,94 @@ max_value = 10.0
 step = 0.1
 value = 1.0
 
-[node name="TextureRect" type="TextureRect" parent="UI" unique_id=1511339849]
-z_index = -1
-offset_left = -1.0
-offset_top = -15.0
-offset_right = 1152.0
-offset_bottom = 65.0
-mouse_filter = 2
-texture = ExtResource("5_1ainy")
-expand_mode = 1
-stretch_mode = 4
-flip_h = true
-flip_v = true
+[node name="Label" type="Label" parent="UI/UIController" unique_id=238812243]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 530.0
+offset_top = 7.0
+offset_right = -17.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_n6hdu")
+text = "Глава: Пирамиды, Задание 3"
+label_settings = SubResource("LabelSettings_n6hdu")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="UI/UIController" unique_id=1710757364]
+visible = false
+layout_mode = 0
+offset_left = 526.0
+offset_top = 57.0
+offset_right = 1144.0
+offset_bottom = 154.0
+theme = ExtResource("5_n6hdu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_km5ld")
+
+[node name="Label" type="Label" parent="UI/UIController/Panel" unique_id=220016022]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = -17.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Создайте 1 фигуру которую нужно добавить к пирамиде, чтобы получить фигуру изображенную на чертеже"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="UI/UIController/Panel" unique_id=1003722261]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 482.0
+offset_right = 612.0
+offset_bottom = 530.0
+theme = ExtResource("5_n6hdu")
+text = "Проверить ответ"
+
+[node name="Label2" type="Label" parent="UI/UIController" unique_id=246296779]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 9.0
+offset_right = -534.0
+offset_bottom = -606.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_n6hdu")
+text = "Время: 00:02:26"
+label_settings = SubResource("LabelSettings_n6hdu")
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="UI/UIController" unique_id=1578050446]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 765.0
+offset_top = 548.0
+offset_right = -172.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_n6hdu")
+text = "Этап 2/3"
+label_settings = SubResource("LabelSettings_n6hdu")
+horizontal_alignment = 2
+autowrap_mode = 2
 
 [node name="TextureRect2" type="TextureRect" parent="UI" unique_id=799646536]
+visible = false
 z_index = -1
 anchors_preset = 7
 anchor_left = 0.5
@@ -328,7 +416,110 @@ texture = ExtResource("5_1ainy")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=988257329]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1546.0
+offset_top = -20.0
+offset_right = 2033.0
+offset_bottom = 49.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI/HBoxContainer" unique_id=1511339849]
+z_index = -1
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_1ainy")
+expand_mode = 3
+stretch_mode = 4
+flip_h = true
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="UI/HBoxContainer" unique_id=1261349297]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("5_1ainy")
+expand_mode = 3
+stretch_mode = 4
+flip_h = true
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="UI/HBoxContainer" unique_id=1876810948]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("5_1ainy")
+expand_mode = 3
+stretch_mode = 4
+flip_h = true
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI" unique_id=1438751504]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1546.0
+offset_top = -44.0
+offset_right = 2033.0
+offset_bottom = 25.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI/HBoxContainer2" unique_id=1999444635]
+z_index = -1
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_1ainy")
+expand_mode = 3
+stretch_mode = 4
+flip_h = true
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="UI/HBoxContainer2" unique_id=1973217050]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("5_1ainy")
+expand_mode = 3
+stretch_mode = 4
+flip_h = true
+flip_v = true
+metadata/_edit_lock_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="UI/HBoxContainer2" unique_id=264184518]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("5_1ainy")
+expand_mode = 3
+stretch_mode = 4
+flip_h = true
+flip_v = true
+metadata/_edit_lock_ = true
+
 [node name="CanvasLayer" parent="." unique_id=2025360197 instance=ExtResource("5_f2txt")]
+visible = false
 
 [connection signal="pressed" from="UI/UIController/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/UIController/Button2" to="." method="_on_button_2_pressed"]

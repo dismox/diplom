@@ -17,11 +17,16 @@ script = ExtResource("1_7np2n")
 [node name="AccountInfoContainer" type="PanelContainer" parent="." unique_id=1921715156]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 13.0
 offset_top = 104.0
-offset_right = 1128.0
-offset_bottom = 612.0
+offset_right = -24.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_mwt1v")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AccountInfoContainer" unique_id=12484609]
@@ -30,18 +35,21 @@ layout_mode = 2
 [node name="RegistrationDateLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=1578304926]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Дата регистрации: Ошибка загрузки данных"
 autowrap_mode = 3
 
 [node name="TasksLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=824817296]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Выполнено заданий: Ошибка загрузки данных"
 autowrap_mode = 3
 
 [node name="AchivmentsLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=466578355]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Достижения: Ошибка загрузки данных"
 autowrap_mode = 3
 

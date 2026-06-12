@@ -240,6 +240,7 @@ shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=2025360197]
+follow_viewport_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1143555150]
 visible = false
@@ -304,15 +305,13 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.07300001
-anchor_top = -0.037
-anchor_right = 0.47300002
-anchor_bottom = 0.047000002
+anchor_top = 0.044000003
+anchor_right = 0.5
+anchor_bottom = 0.94000006
 offset_left = 0.2026596
-offset_top = -0.24100113
-offset_right = 2.6693115
-offset_bottom = -1.3289757
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -41.30793
+offset_right = -21.666656
+offset_bottom = -454.07913
 theme_override_constants/separation = 11
 
 [node name="TabPanel" parent="Manual/TextureRect/TabsHBoxContainer" unique_id=324115821 node_paths=PackedStringArray("manual") instance=ExtResource("4_45q66")]

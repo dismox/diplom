@@ -37,7 +37,7 @@ func check_login() -> void:
 
 func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	if response_code == 0:
-		message.text += "\nПривышено время ожидания ответа"
+		message.text += "\nНе удалось подключиться к серверу"
 		
 	elif response_code == 200:
 		var json_string = body.get_string_from_utf8()
