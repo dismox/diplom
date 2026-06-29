@@ -7,7 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://dheokgv2xll1j" path="res://assets/pattern_line.svg" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://bwtm4t7wknd37" path="res://manual/manual.tscn" id="5_f2txt"]
 [ext_resource type="Theme" uid="uid://de8835nk2nbdf" path="res://misc/main_theme.tres" id="5_n6hdu"]
+[ext_resource type="Script" uid="uid://b0xbyxjmauyy8" path="res://timer.gd" id="6_i2t4f"]
 [ext_resource type="Script" uid="uid://ctvnl56d10a83" path="res://level_ending.gd" id="8_km5ld"]
+[ext_resource type="Script" uid="uid://brmwqvpt6tcal" path="res://figure_control.gd" id="9_5pxul"]
+[ext_resource type="Texture2D" uid="uid://dggwouhcdtyn4" path="res://assets/arrow.svg" id="9_aicyk"]
+[ext_resource type="Texture2D" uid="uid://bj74lhy43nqdy" path="res://assets/arrow_pressed.svg" id="10_8b0r0"]
+[ext_resource type="Texture2D" uid="uid://bew4upivce331" path="res://assets/arrow_hovered.svg" id="11_h6smj"]
+[ext_resource type="Texture2D" uid="uid://c4xiaud7yrvbr" path="res://assets/arrow2.svg" id="12_v5j5c"]
+[ext_resource type="Texture2D" uid="uid://njc24gsghq1g" path="res://assets/arrow_pressed2.svg" id="13_5pxul"]
+[ext_resource type="Texture2D" uid="uid://do14yuc5t18si" path="res://assets/arrow_hovered2.svg" id="14_fedht"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -51,6 +59,21 @@ shader_parameter/outline_threshold = 2.0
 next_pass = SubResource("ShaderMaterial_lquwl")
 diffuse_mode = 1
 metallic_specular = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2t4f"]
+bg_color = Color(0.8862745, 0.54509807, 0.54509807, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8862745, 0.54509807, 0.54509807, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.5058824)
+shadow_size = 1
+shadow_offset = Vector2(0, 5)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_0xm2m"]
 
@@ -127,6 +150,97 @@ visible = false
 operation = 2
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=438206737]
+
+[node name="LevelEnding" type="PanelContainer" parent="UI" unique_id=1637476612]
+unique_name_in_owner = true
+visible = false
+z_index = 40
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 323.0
+offset_top = 280.0
+offset_right = -348.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_n6hdu")
+script = ExtResource("8_km5ld")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/LevelEnding" unique_id=2074278721]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/LevelEnding/MarginContainer" unique_id=377463815]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/LevelEnding/MarginContainer/VBoxContainer" unique_id=1212174531]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UI/LevelEnding/MarginContainer/VBoxContainer" unique_id=1340211309]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 42
+text = "Задание пройдено!"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="UI/LevelEnding/MarginContainer/VBoxContainer" unique_id=2121033748]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "Время:"
+
+[node name="MistakesLabel" type="Label" parent="UI/LevelEnding/MarginContainer/VBoxContainer" unique_id=1103848596]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "Количество ошибок:"
+
+[node name="ScoreLabel" type="Label" parent="UI/LevelEnding/MarginContainer/VBoxContainer" unique_id=822891014]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Набрано баллов:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/LevelEnding/MarginContainer/VBoxContainer" unique_id=746049091]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ExtraExit" type="Button" parent="UI/LevelEnding/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1221283]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i2t4f")
+text = "Выйти без сохранения"
+
+[node name="Button" type="Button" parent="UI/LevelEnding/MarginContainer/VBoxContainer/HBoxContainer" unique_id=424903824]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+text = "Сохранить и выйти"
+
+[node name="Message" type="Label" parent="UI/LevelEnding/MarginContainer/VBoxContainer/HBoxContainer/Button" unique_id=563096154]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -896.0
+offset_top = -65.0
+offset_right = 3.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
 
 [node name="UIController" type="Control" parent="UI" unique_id=920142314]
 unique_name_in_owner = true
@@ -331,31 +445,35 @@ value = 1.0
 
 [node name="Label" type="Label" parent="UI/UIController" unique_id=238812243]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 530.0
+offset_left = -230.0
 offset_top = 7.0
 offset_right = -17.0
-offset_bottom = -608.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_bottom = 40.0
+grow_horizontal = 0
 theme = ExtResource("5_n6hdu")
-text = "Глава: Пирамиды, Задание 3"
+text = "Глава: Призмы"
 label_settings = SubResource("LabelSettings_n6hdu")
 horizontal_alignment = 2
 autowrap_mode = 2
 
 [node name="Panel" type="Panel" parent="UI/UIController" unique_id=1710757364]
-layout_mode = 0
-offset_left = 974.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -626.0
 offset_top = 57.0
-offset_right = 1592.0
-offset_bottom = 154.0
+offset_right = -8.0
+offset_bottom = 242.0
+grow_horizontal = 0
 theme = ExtResource("5_n6hdu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_km5ld")
 
-[node name="Label" type="Label" parent="UI/UIController/Panel" unique_id=220016022]
+[node name="TaskLabel" type="Label" parent="UI/UIController/Panel" unique_id=220016022]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -366,51 +484,58 @@ offset_right = -17.0
 offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Постройте фигуру, в основании которой лежит квадрат со стороной 1, а высота пирамиды вдвое меньше и образует угол 90 градусов с одной из сторон основания."
+text = "Создайте призму, в основании которой лежит шестиугольник со стороной = 4. Высота призмы относится к стороне основания как 2:1 (Стороны правильного шестиугольника равны радиусу описаной окружности)"
 autowrap_mode = 2
 
-[node name="CheckResult" type="Button" parent="UI/UIController/Panel" unique_id=1003722261]
-layout_mode = 0
-offset_left = 332.0
-offset_top = 730.0
-offset_right = 476.0
-offset_bottom = 778.0
-theme = ExtResource("5_n6hdu")
-text = "Проверить ответ"
-
-[node name="Label2" type="Label" parent="UI/UIController" unique_id=246296779]
+[node name="Timer" type="Label" parent="UI/UIController" unique_id=246296779]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = 13.0
 offset_top = 9.0
-offset_right = -534.0
-offset_bottom = -858.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1066.0
+offset_bottom = 42.0
 theme = ExtResource("5_n6hdu")
 text = "Время: 00:00:01"
 label_settings = SubResource("LabelSettings_n6hdu")
 autowrap_mode = 2
+script = ExtResource("6_i2t4f")
+
+[node name="CheckResult" type="Button" parent="UI/UIController" unique_id=1003722261]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -112.0
+offset_right = -144.0
+offset_bottom = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("5_n6hdu")
+text = "Проверить ответ"
 
 [node name="StageLabel" type="Label" parent="UI/UIController" unique_id=1578050446]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.9520001
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1338.0
-offset_top = 792.0
+anchor_bottom = 0.9520001
+offset_left = -141.00012
+offset_top = -64.80005
 offset_right = -28.0
-offset_bottom = -75.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_bottom = -31.800049
+grow_horizontal = 0
+grow_vertical = 0
 theme = ExtResource("5_n6hdu")
 text = "Этап 1/3"
 label_settings = SubResource("LabelSettings_n6hdu")
 horizontal_alignment = 2
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="UI" unique_id=799646536]
 visible = false
@@ -532,40 +657,175 @@ flip_h = true
 flip_v = true
 metadata/_edit_lock_ = true
 
-[node name="CanvasLayer" parent="." unique_id=2025360197 instance=ExtResource("5_f2txt")]
+[node name="MistakeWindow" type="PanelContainer" parent="UI" unique_id=705408055]
+unique_name_in_owner = true
 visible = false
-
-[node name="LevelEnding" type="PanelContainer" parent="." unique_id=1637476612]
-offset_left = 267.0
-offset_top = 198.0
-offset_right = 1196.0
-offset_bottom = 760.0
+z_index = 40
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 477.0
+offset_top = 280.0
+offset_right = -572.0
+offset_bottom = -331.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("5_n6hdu")
-script = ExtResource("8_km5ld")
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelEnding" unique_id=2074278721]
+[node name="MarginContainer" type="MarginContainer" parent="UI/MistakeWindow" unique_id=1222272351]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelEnding/MarginContainer" unique_id=377463815]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MistakeWindow/MarginContainer" unique_id=1005820034]
 layout_mode = 2
-alignment = 2
 
-[node name="Label" type="Label" parent="LevelEnding/MarginContainer/VBoxContainer" unique_id=563096154]
+[node name="Label2" type="Label" parent="UI/MistakeWindow/MarginContainer/VBoxContainer" unique_id=145461421]
 layout_mode = 2
-text = "Задание пройдено"
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Ошибка!"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="LevelEnding/MarginContainer/VBoxContainer" unique_id=424903824]
+[node name="MistakeLabel" type="Label" parent="UI/MistakeWindow/MarginContainer/VBoxContainer" unique_id=1130192945]
+unique_name_in_owner = true
 layout_mode = 2
-text = "В меню"
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="UI/MistakeWindow/MarginContainer/VBoxContainer" unique_id=679928621]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+text = "Продолжить"
+
+[node name="FigureControl" type="Control" parent="UI" unique_id=471711354]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_5pxul")
+
+[node name="Up" type="TextureButton" parent="UI/FigureControl" unique_id=1753399437]
+layout_mode = 0
+offset_left = 771.0
+offset_top = 645.0
+offset_right = 869.0
+offset_bottom = 743.9866
+texture_normal = ExtResource("9_aicyk")
+texture_pressed = ExtResource("10_8b0r0")
+texture_hover = ExtResource("11_h6smj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Down" type="TextureButton" parent="UI/FigureControl" unique_id=526501901]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 748.0
+offset_right = 868.0
+offset_bottom = 846.9866
+rotation = 3.1415927
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = ExtResource("9_aicyk")
+texture_pressed = ExtResource("10_8b0r0")
+texture_hover = ExtResource("11_h6smj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Left" type="TextureButton" parent="UI/FigureControl" unique_id=1678072548]
+layout_mode = 0
+offset_left = 688.50397
+offset_top = 793.0
+offset_right = 786.50397
+offset_bottom = 891.9866
+rotation = -1.5705786
+texture_normal = ExtResource("9_aicyk")
+texture_pressed = ExtResource("10_8b0r0")
+texture_hover = ExtResource("11_h6smj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Right" type="TextureButton" parent="UI/FigureControl" unique_id=97404068]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 696.0
+offset_right = 950.0
+offset_bottom = 794.9866
+rotation = 1.5710142
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = ExtResource("9_aicyk")
+texture_pressed = ExtResource("10_8b0r0")
+texture_hover = ExtResource("11_h6smj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RotRight" type="TextureButton" parent="UI/FigureControl" unique_id=2136942738]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 638.0
+offset_right = 1031.0
+offset_bottom = 736.9866
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = ExtResource("12_v5j5c")
+texture_pressed = ExtResource("13_5pxul")
+texture_hover = ExtResource("14_fedht")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RotLeft" type="TextureButton" parent="UI/FigureControl" unique_id=1401985672]
+layout_mode = 0
+offset_left = 603.0
+offset_top = 637.0
+offset_right = 701.0
+offset_bottom = 735.9866
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = ExtResource("12_v5j5c")
+texture_pressed = ExtResource("13_5pxul")
+texture_hover = ExtResource("14_fedht")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="Up2" type="TextureButton" parent="UI/FigureControl" unique_id=893345033]
+layout_mode = 0
+offset_left = 947.0
+offset_top = 744.0
+offset_right = 1045.0
+offset_bottom = 842.9866
+texture_normal = ExtResource("9_aicyk")
+texture_pressed = ExtResource("10_8b0r0")
+texture_hover = ExtResource("11_h6smj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Down2" type="TextureButton" parent="UI/FigureControl" unique_id=1853749563]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 745.0
+offset_right = 684.0
+offset_bottom = 843.9866
+rotation = 3.1415927
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = ExtResource("9_aicyk")
+texture_pressed = ExtResource("10_8b0r0")
+texture_hover = ExtResource("11_h6smj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CanvasLayer" parent="." unique_id=2025360197 instance=ExtResource("5_f2txt")]
+visible = false
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=656741518]
 unique_name_in_owner = true
 timeout = 5.0
 
+[connection signal="pressed" from="UI/LevelEnding/MarginContainer/VBoxContainer/HBoxContainer/ExtraExit" to="UI/LevelEnding" method="_on_button_2_pressed"]
+[connection signal="pressed" from="UI/LevelEnding/MarginContainer/VBoxContainer/HBoxContainer/Button" to="UI/LevelEnding" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/UIController/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/UIController/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="UI/UIController/Button3" to="." method="_on_button_3_pressed"]
@@ -582,6 +842,14 @@ timeout = 5.0
 [connection signal="value_changed" from="UI/UIController/FigureDebug/BaseParams/DepthEdit" to="UI/UIController" method="_on_depth_edit_value_changed"]
 [connection signal="value_changed" from="UI/UIController/FigureDebug/HBoxContainer6/SidesEdit" to="UI/UIController" method="_on_sides_edit_value_changed"]
 [connection signal="value_changed" from="UI/UIController/FigureDebug/HBoxContainer6/RadiusEdit" to="UI/UIController" method="_on_radius_edit_value_changed"]
-[connection signal="pressed" from="UI/UIController/Panel/CheckResult" to="UI/UIController" method="_on_check_result_pressed"]
-[connection signal="pressed" from="LevelEnding/MarginContainer/VBoxContainer/Button" to="LevelEnding" method="_on_button_pressed"]
-[connection signal="request_completed" from="HTTPRequest" to="LevelEnding" method="_on_http_request_request_completed"]
+[connection signal="pressed" from="UI/UIController/CheckResult" to="UI/UIController" method="_on_check_result_pressed"]
+[connection signal="pressed" from="UI/MistakeWindow/MarginContainer/VBoxContainer/Button" to="UI/UIController" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/FigureControl/Up" to="UI/FigureControl" method="_on_up_pressed"]
+[connection signal="pressed" from="UI/FigureControl/Down" to="UI/FigureControl" method="_on_down_pressed"]
+[connection signal="pressed" from="UI/FigureControl/Left" to="UI/FigureControl" method="_on_left_pressed"]
+[connection signal="pressed" from="UI/FigureControl/Right" to="UI/FigureControl" method="_on_right_pressed"]
+[connection signal="pressed" from="UI/FigureControl/RotRight" to="UI/FigureControl" method="_on_rot_right_pressed"]
+[connection signal="pressed" from="UI/FigureControl/RotLeft" to="UI/FigureControl" method="_on_rot_left_pressed"]
+[connection signal="pressed" from="UI/FigureControl/Up2" to="UI/FigureControl" method="_on_up_2_pressed"]
+[connection signal="pressed" from="UI/FigureControl/Down2" to="UI/FigureControl" method="_on_down_2_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="UI/LevelEnding" method="_on_http_request_request_completed"]

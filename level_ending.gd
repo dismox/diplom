@@ -1,8 +1,14 @@
 extends PanelContainer
 
+func show_results():
+	%TimeLabel.text = "Время: " + %Timer.get_time_string()
+	%MistakesLabel.text = "Количество ошибок: " + str($"../..".mistakes)
+	%ScoreLabel.text = "Набрано баллов: " + str($"../..".get_score())
+	
+
 
 func _on_button_pressed() -> void:
-	$MarginContainer/VBoxContainer/Label.text = "Ожидание"
+	%Message.text = "Ожидание"
 	
 	var url := "http://192.168.56.1:80/users"
 
@@ -14,12 +20,13 @@ func _on_button_pressed() -> void:
 	var body_dict := {
 		"completedTasks": {
 			"TaskName": "69cbb2961f768a0b56710ab8",
-			"completeTime": 50,
-			"score": 100
+			"completeTime": int(%Timer.time_elapsed),
+			"score": $"../..".get_score()
 		}
 	}
 	
 	var body_json := JSON.stringify(body_dict)
+	print(body_json)
 
 	var err = %HTTPRequest.request(url, headers, HTTPClient.METHOD_PUT, body_json)
 	if err != OK:
@@ -31,7 +38,8 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 
 	if response_code == 0:
 		print("Привышено время ожидания ответа")
-		$MarginContainer/VBoxContainer/Label.text = "Привышено время ожидания ответа"
+		%Message.text = "Не удалось сохранить прогресс. Не получен ответ от сервера."
+		%ExtraExit.show()
 
 	if response_code == 200:
 		var json = JSON.parse_string(body_text)
@@ -42,3 +50,10 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 		Global.main_screen._on_back_button_pressed()
 		Global.main_screen
 		$"..".queue_free()
+
+
+func _on_button_2_pressed() -> void:
+	Global.main_screen.show()
+	Global.main_screen._on_back_button_pressed()
+	Global.main_screen
+	$"..".queue_free()

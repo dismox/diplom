@@ -33,19 +33,23 @@ func fill_level_preview():
 
 	#тестовые данные
 	var data_array = [
-		{ "name": "Someone", "score": "69", "time": "01:00" },
-		{ "name": "Student", "score": "42", "time": "01:15" }
+		{ "name": "Someone", "score": "69", "time": "60" },
+		{ "name": "Student", "score": "42", "time": "1235" }
 	]
 	
 		
 	for item in data_array:
 		var name = str(item.get("name", "?"))
 		var score = str(item.get("score", "0"))
-		var time = str(item.get("time", "00:00"))
+		var time = item.get("time", "0")
+		
+		var minutes := int(time) / 60
+		var seconds := int(time) % 60
+		var string_time: String = "%02d:%02d" % [minutes, seconds]
 		
 		var table_line: TableLine = load("res://table_line.tscn").instantiate()
 		leader_table.add_child(table_line)
-		table_line.set_values(name, time, score)
+		table_line.set_values(name, string_time, score)
 
 
 func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
