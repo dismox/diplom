@@ -33,8 +33,8 @@ func fill_level_preview():
 
 	#тестовые данные
 	var data_array = [
-		{ "name": "name1", "score": "1", "time": "00:00" },
-		{ "name": "name2", "score": "42", "time": "01:15" }
+		{ "name": "Someone", "score": "69", "time": "01:00" },
+		{ "name": "Student", "score": "42", "time": "01:15" }
 	]
 	
 		

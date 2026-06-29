@@ -6,6 +6,21 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ouvn0"]
 font_color = Color(0.42745098, 0.3647059, 0.3647059, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouvn0"]
+bg_color = Color(0.4117647, 0.76862746, 0.49019608, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.4117647, 0.76862746, 0.49019608, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.5058824)
+shadow_size = 1
+shadow_offset = Vector2(0, 5)
+
 [sub_resource type="LabelSettings" id="LabelSettings_4uyiu"]
 font_color = Color(0.8862745, 0.54509807, 0.54509807, 1)
 
@@ -38,6 +53,7 @@ layout_mode = 2
 theme_override_constants/separation = 7
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1421648780]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Авторизация"
 label_settings = SubResource("LabelSettings_ouvn0")
@@ -54,9 +70,24 @@ layout_mode = 2
 placeholder_text = "Пароль"
 secret = true
 
+[node name="PasswordEditRepeat" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=124916079]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+placeholder_text = "Повторите пароль"
+secret = true
+
 [node name="LoginButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1387419137]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Вход"
+
+[node name="RegisterButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1805264795]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ouvn0")
+text = "Регистрация"
 
 [node name="Message" type="Label" parent="MarginContainer/VBoxContainer" unique_id=20709078]
 unique_name_in_owner = true
@@ -69,4 +100,5 @@ unique_name_in_owner = true
 timeout = 2.0
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LoginButton" to="." method="_on_login_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RegisterButton" to="." method="_on_register_button_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

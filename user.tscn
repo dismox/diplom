@@ -18,39 +18,48 @@ script = ExtResource("1_7np2n")
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 13.0
-offset_top = 104.0
-offset_right = -24.0
-offset_bottom = -36.0
-grow_horizontal = 2
+anchors_preset = -1
+anchor_left = 0.892
+anchor_top = 0.034
+anchor_right = 0.9850001
+anchor_bottom = 0.08800001
+offset_left = -160.18835
+offset_top = 73.399994
+offset_right = -0.00012207031
+offset_bottom = 139.79999
+grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("2_mwt1v")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AccountInfoContainer" unique_id=12484609]
+[node name="MarginContainer" type="MarginContainer" parent="AccountInfoContainer" unique_id=502349984]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AccountInfoContainer/MarginContainer" unique_id=12484609]
 layout_mode = 2
 
-[node name="RegistrationDateLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=1578304926]
+[node name="RegistrationDateLabel" type="Label" parent="AccountInfoContainer/MarginContainer/VBoxContainer" unique_id=1578304926]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Дата регистрации: Ошибка загрузки данных"
+text = "Дата регистрации: 25.05.2026"
 autowrap_mode = 3
 
-[node name="TasksLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=824817296]
+[node name="TasksLabel" type="Label" parent="AccountInfoContainer/MarginContainer/VBoxContainer" unique_id=824817296]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Выполнено заданий: Ошибка загрузки данных"
+text = "Выполнено заданий: 0"
 autowrap_mode = 3
 
-[node name="AchivmentsLabel" type="Label" parent="AccountInfoContainer/VBoxContainer" unique_id=466578355]
+[node name="AchivmentsLabel" type="Label" parent="AccountInfoContainer/MarginContainer/VBoxContainer" unique_id=466578355]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Достижения: Ошибка загрузки данных"
+text = "Достижения: 0"
 autowrap_mode = 3
 
 [node name="User" type="PanelContainer" parent="." unique_id=976356730]
@@ -87,7 +96,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_mwt1v")
-text = "Пользователь"
+text = "Account"
 
 [node name="AccountLevelLabel" type="Label" parent="User/MarginContainer/HBoxContainer/VBoxContainer" unique_id=203762627]
 unique_name_in_owner = true

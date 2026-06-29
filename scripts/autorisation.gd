@@ -5,9 +5,19 @@ extends PanelContainer
 @onready var message: Label = %Message
 @onready var http_request: HTTPRequest = %HTTPRequest
 
+var register_mode: bool = false
+
 func _on_login_button_pressed() -> void:
 	#проверка авторизации
-	login_process()
+	if register_mode:
+		message.text = ""
+		register_mode = false
+		%Label.text = "Авторизация"
+		%RegisterButton.text = "Регистрация"
+		%LoginButton.text = "Вход"
+		%PasswordEditRepeat.hide()
+	else:
+		login_process()
 
 func login_process() -> void:
 	message.text = ""
@@ -23,6 +33,11 @@ func login_process() -> void:
 	if login and password:
 		#запрос
 		check_login()
+		
+		#%Account.request_account_info()
+		#%Account.show()
+		#%ChaptersContainer.show()
+		#hide()
 
 
 func check_login() -> void:
@@ -51,3 +66,17 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 		
 	else:
 		message.text = body.get_string_from_utf8()
+
+
+func _on_register_button_pressed() -> void:
+	if !register_mode:
+		message.text = ""
+		register_mode = true
+		%Label.text = "Регистрация"
+		%RegisterButton.text = "Создать аккаунт"
+		%LoginButton.text = "Авторизация"
+		%PasswordEditRepeat.show()
+	else:
+		if %PasswordEdit.text != %PasswordEditRepeat.text:
+			message.text += "Пароль не совпадает"
+	

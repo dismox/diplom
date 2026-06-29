@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dheokgv2xll1j" path="res://assets/pattern_line.svg" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://bwtm4t7wknd37" path="res://manual/manual.tscn" id="5_f2txt"]
 [ext_resource type="Theme" uid="uid://de8835nk2nbdf" path="res://misc/main_theme.tres" id="5_n6hdu"]
+[ext_resource type="Script" uid="uid://ctvnl56d10a83" path="res://level_ending.gd" id="8_km5ld"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -71,6 +72,7 @@ shadow_size = 1
 shadow_offset = Vector2(0, 5)
 
 [node name="Level" type="Node3D" unique_id=1904363021]
+top_level = true
 script = ExtResource("1_0b4ue")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1272539582]
@@ -90,6 +92,7 @@ test_figure = NodePath("../CSGCombiner3D/TestFigure")
 [node name="Camera3D" type="Camera3D" parent="CameraController" unique_id=1006707242]
 transform = Transform3D(1, 0, 0, 0, 0.6971651, 0.7169106, 0, -0.7169106, 0.6971651, 0, 2.6843293, 2.0902848)
 keep_aspect = 0
+current = true
 fov = 37.849285
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=652580473]
@@ -98,6 +101,20 @@ mesh = SubResource("PlaneMesh_ig7tw")
 surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1963152521]
+
+[node name="Stage1Figure" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1732631662]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.173762, 0.51054096, -0.0051164627)
+visible = false
+mesh = SubResource("BoxMesh_0xm2m")
+material = SubResource("StandardMaterial3D_7mycd")
+
+[node name="Stage2Figure" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1475143708]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3301, 0.51054096, 0.43210578)
+visible = false
+mesh = SubResource("BoxMesh_0xm2m")
+material = SubResource("StandardMaterial3D_7mycd")
 
 [node name="TestFigure" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1902142784]
 unique_name_in_owner = true
@@ -313,7 +330,6 @@ step = 0.1
 value = 1.0
 
 [node name="Label" type="Label" parent="UI/UIController" unique_id=238812243]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -331,11 +347,10 @@ horizontal_alignment = 2
 autowrap_mode = 2
 
 [node name="Panel" type="Panel" parent="UI/UIController" unique_id=1710757364]
-visible = false
 layout_mode = 0
-offset_left = 526.0
+offset_left = 974.0
 offset_top = 57.0
-offset_right = 1144.0
+offset_right = 1592.0
 offset_bottom = 154.0
 theme = ExtResource("5_n6hdu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_km5ld")
@@ -351,20 +366,19 @@ offset_right = -17.0
 offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Создайте 1 фигуру которую нужно добавить к пирамиде, чтобы получить фигуру изображенную на чертеже"
+text = "Постройте фигуру, в основании которой лежит квадрат со стороной 1, а высота пирамиды вдвое меньше и образует угол 90 градусов с одной из сторон основания."
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="UI/UIController/Panel" unique_id=1003722261]
+[node name="CheckResult" type="Button" parent="UI/UIController/Panel" unique_id=1003722261]
 layout_mode = 0
-offset_left = 468.0
-offset_top = 482.0
-offset_right = 612.0
-offset_bottom = 530.0
+offset_left = 332.0
+offset_top = 730.0
+offset_right = 476.0
+offset_bottom = 778.0
 theme = ExtResource("5_n6hdu")
 text = "Проверить ответ"
 
 [node name="Label2" type="Label" parent="UI/UIController" unique_id=246296779]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -372,28 +386,28 @@ anchor_bottom = 1.0
 offset_left = 13.0
 offset_top = 9.0
 offset_right = -534.0
-offset_bottom = -606.0
+offset_bottom = -858.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_n6hdu")
-text = "Время: 00:02:26"
+text = "Время: 00:00:01"
 label_settings = SubResource("LabelSettings_n6hdu")
 autowrap_mode = 2
 
-[node name="Label3" type="Label" parent="UI/UIController" unique_id=1578050446]
-visible = false
+[node name="StageLabel" type="Label" parent="UI/UIController" unique_id=1578050446]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 765.0
-offset_top = 548.0
-offset_right = -172.0
-offset_bottom = -67.0
+offset_left = 1338.0
+offset_top = 792.0
+offset_right = -28.0
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_n6hdu")
-text = "Этап 2/3"
+text = "Этап 1/3"
 label_settings = SubResource("LabelSettings_n6hdu")
 horizontal_alignment = 2
 autowrap_mode = 2
@@ -521,6 +535,37 @@ metadata/_edit_lock_ = true
 [node name="CanvasLayer" parent="." unique_id=2025360197 instance=ExtResource("5_f2txt")]
 visible = false
 
+[node name="LevelEnding" type="PanelContainer" parent="." unique_id=1637476612]
+offset_left = 267.0
+offset_top = 198.0
+offset_right = 1196.0
+offset_bottom = 760.0
+theme = ExtResource("5_n6hdu")
+script = ExtResource("8_km5ld")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelEnding" unique_id=2074278721]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelEnding/MarginContainer" unique_id=377463815]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="LevelEnding/MarginContainer/VBoxContainer" unique_id=563096154]
+layout_mode = 2
+text = "Задание пройдено"
+
+[node name="Button" type="Button" parent="LevelEnding/MarginContainer/VBoxContainer" unique_id=424903824]
+layout_mode = 2
+text = "В меню"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=656741518]
+unique_name_in_owner = true
+timeout = 5.0
+
 [connection signal="pressed" from="UI/UIController/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/UIController/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="UI/UIController/Button3" to="." method="_on_button_3_pressed"]
@@ -537,3 +582,6 @@ visible = false
 [connection signal="value_changed" from="UI/UIController/FigureDebug/BaseParams/DepthEdit" to="UI/UIController" method="_on_depth_edit_value_changed"]
 [connection signal="value_changed" from="UI/UIController/FigureDebug/HBoxContainer6/SidesEdit" to="UI/UIController" method="_on_sides_edit_value_changed"]
 [connection signal="value_changed" from="UI/UIController/FigureDebug/HBoxContainer6/RadiusEdit" to="UI/UIController" method="_on_radius_edit_value_changed"]
+[connection signal="pressed" from="UI/UIController/Panel/CheckResult" to="UI/UIController" method="_on_check_result_pressed"]
+[connection signal="pressed" from="LevelEnding/MarginContainer/VBoxContainer/Button" to="LevelEnding" method="_on_button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="LevelEnding" method="_on_http_request_request_completed"]

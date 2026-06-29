@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://c2fe1xybwvr7o"]
 
 [ext_resource type="Script" uid="uid://bspp7hn6s80q5" path="res://scripts/table_line.gd" id="1_aln1w"]
+[ext_resource type="Theme" uid="uid://de8835nk2nbdf" path="res://misc/main_theme.tres" id="1_dd2nx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k42ha"]
+bg_color = Color(0.9931024, 0.95087105, 0.88423014, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_offset = Vector2(0, 5)
 
 [node name="TableLine" type="HBoxContainer" unique_id=535000326]
+theme = ExtResource("1_dd2nx")
 script = ExtResource("1_aln1w")
 
 [node name="UserLabel" type="Label" parent="." unique_id=829365135]
@@ -11,14 +21,44 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Пользователь"
 
+[node name="Panel" type="Panel" parent="UserLabel" unique_id=49104996]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k42ha")
+
 [node name="TimeLabel" type="Label" parent="." unique_id=310076286]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Время"
 
+[node name="Panel" type="Panel" parent="TimeLabel" unique_id=1705595313]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k42ha")
+
 [node name="ScoreLabel" type="Label" parent="." unique_id=28211335]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Счёт"
+
+[node name="Panel" type="Panel" parent="ScoreLabel" unique_id=1403990887]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k42ha")

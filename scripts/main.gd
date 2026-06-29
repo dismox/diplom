@@ -1,5 +1,14 @@
 extends Node3D
 
+var stage: int = 1:
+	set(value):
+		stage = value
+		%StageLabel.text = "Этап %s/3" % value
+var result
+
+var score: int = 100
+var level_id = "69cbb2961f768a0b56710ab8"
+
 
 func _on_button_pressed() -> void:
 	%UIController.current_data = {
@@ -9,7 +18,6 @@ func _on_button_pressed() -> void:
 	
 	%UIController.update_figure()
 	
-
 func _on_button_2_pressed() -> void:
 	%UIController.current_data = {
 	"type": "pyramid",
