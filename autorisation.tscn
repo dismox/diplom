@@ -84,7 +84,6 @@ text = "Вход"
 
 [node name="RegisterButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1805264795]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_ouvn0")
 text = "Регистрация"

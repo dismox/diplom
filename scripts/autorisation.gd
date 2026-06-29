@@ -55,15 +55,17 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 		message.text += "\nНе удалось подключиться к серверу"
 		
 	elif response_code == 200:
-		var json_string = body.get_string_from_utf8()
-		var data = JSON.parse_string(json_string)
-		Global.accessToken = data.accessToken
-		#Global.accessToken = data.get("accessToken", "?") #Другой вариант если тот не работает
-		%Account.request_account_info()
-		%Account.show()
-		%ChaptersContainer.show()
-		hide()
-		
+		if !register_mode:
+			var json_string = body.get_string_from_utf8()
+			var data = JSON.parse_string(json_string)
+			Global.accessToken = data.accessToken
+			#Global.accessToken = data.get("accessToken", "?") #Другой вариант если тот не работает
+			%Account.request_account_info()
+			%Account.show()
+			%ChaptersContainer.show()
+			hide()
+		else:
+			check_login()
 	else:
 		message.text = body.get_string_from_utf8()
 
@@ -79,4 +81,16 @@ func _on_register_button_pressed() -> void:
 	else:
 		if %PasswordEdit.text != %PasswordEditRepeat.text:
 			message.text += "Пароль не совпадает"
+		else:
+			check_registration()
+			
 	
+	
+func check_registration():
+	var data = {
+		"name": username_edit.text, 
+		"password": password_edit.text
+		}
+	var json = JSON.stringify(data, "\t")
+	print(json)
+	await http_request.request(Global.url + "/users", ["Content-Type: application/json"], HTTPClient.METHOD_POST, json)
